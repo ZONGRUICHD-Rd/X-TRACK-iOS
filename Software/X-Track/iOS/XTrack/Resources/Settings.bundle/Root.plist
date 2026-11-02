@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PreferenceSpecifiers</key>
+	<array>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>相机控制 (Camera Control)</string>
+			<key>FooterText</key>
+			<string>轻按相机控制并左右滑动 = 码表旋钮上下滚动（切换焦点 / 滚动列表 / 缩放地图）；按下 = 确认，长按 = 长按。需要 iPhone 16 及以后机型。启用时系统会占用音量键作为按下操作，并显示相机使用指示点（不会拍摄画面）。</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>启用相机控制按钮</string>
+			<key>Key</key>
+			<string>camera_control_enabled</string>
+			<key>DefaultValue</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>反转滑动方向</string>
+			<key>Key</key>
+			<string>camera_control_reversed</string>
+			<key>DefaultValue</key>
+			<false/>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -1,0 +1,46 @@
+name: iOS unsigned IPA
+
+on:
+  push:
+    paths:
+      - "Software/X-Track/**"
+      - ".github/workflows/ios-ipa.yml"
+  pull_request:
+    paths:
+      - "Software/X-Track/**"
+      - ".github/workflows/ios-ipa.yml"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-26
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Select Xcode 26
+        run: |
+          XCODE=$(ls -d /Applications/Xcode_26*.app 2>/dev/null | sort -V | tail -n 1 || true)
+          if [ -n "$XCODE" ]; then sudo xcode-select -s "$XCODE"; fi
+          xcodebuild -version
+          xcodebuild -showsdks | grep -i iphoneos
+
+      - name: Install XcodeGen
+        run: brew install xcodegen
+
+      - name: Build unsigned IPA
+        run: Software/X-Track/iOS/build_ipa.sh
+
+      - name: Upload IPA
+        uses: actions/upload-artifact@v4
+        with:
+          name: X-TRACK-iOS26-unsigned-ipa
+          path: Software/X-Track/iOS/build/X-TRACK-unsigned.ipa
+          if-no-files-found: error
+
+      - name: Upload build log
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: xcodebuild-log
+          path: Software/X-Track/iOS/build/xcodebuild.log
