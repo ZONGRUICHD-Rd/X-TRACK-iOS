@@ -6,7 +6,6 @@ options:
   bundleIdPrefix: com.xtrack
   deploymentTarget:
     iOS: "26.0"
-  createIntermediateGroups: true
   developmentLanguage: zh-Hans
 
 settings:
@@ -27,8 +26,6 @@ targets:
           - "Resources/Info.plist"
       # Original X-TRACK application (UI pages, data processing, utils) - unchanged
       - path: ../USER/App
-        name: X-TRACK App
-        group: Shared
         includes:
           - "**/*.c"
           - "**/*.cpp"
@@ -38,8 +35,6 @@ targets:
           - "Utils/new/**"           # embedded operator new override
       # LVGL v8.3 (same copy and lv_conf.h as the simulator / hardware builds)
       - path: ../Simulator/LVGL.Simulator/lvgl/src
-        name: lvgl
-        group: Shared
         includes:
           - "**/*.c"
     dependencies:
