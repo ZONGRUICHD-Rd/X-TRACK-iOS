@@ -39,6 +39,7 @@ targets:
           - "**/*.c"
     dependencies:
       - sdk: UIKit.framework
+      - sdk: CoreGraphics.framework
       - sdk: QuartzCore.framework
       - sdk: AVFoundation.framework
       - sdk: AVKit.framework
